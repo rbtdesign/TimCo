@@ -1,0 +1,21 @@
+﻿<Application x:Class="TRMDesktopUI.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:TRMDesktopUI">
+            <!--StartupUri="MainWindow.xaml"-->
+            <!--Removed this place and replaced by resource dictionnary bootstraper to launch boostraper on launch instead of mainWindow.xaml-->
+
+
+    <Application.Resources>
+        
+        <!--ADDED this part START -->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <local:Bootstrapper x:Key="Bootstrapper"/>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        <!--ADDED this part END -->
+    </Application.Resources>
+</Application>

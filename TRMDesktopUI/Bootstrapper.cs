@@ -33,9 +33,9 @@ namespace TRMDesktopUI
             // specific to caliburn
 
             _container
-                .Singleton<IWindowManager, WindowManager>() // Handling windows in and out
-                .Singleton<IEventAggregator, EventAggregator>(); // Pass event message throughout app instead of passing data trhough constructor and method; link everything
-                                                                 // singleton = create one instance of the class for the life of app or scope of container ( same thing here )
+                .Singleton<IWindowManager, WindowManager>()     // Handling windows in and out
+                .Singleton<IEventAggregator, EventAggregator>() // Pass event message throughout app instead of passing data trhough constructor and method; link everything
+                .Singleton<IAPIHelper, APIHelper>();            // singleton = create one instance of the class for the life of app or scope of container ( same thing here ) same as a static class
 
             GetType().Assembly.GetTypes()
                 .Where(Type => Type.IsClass)

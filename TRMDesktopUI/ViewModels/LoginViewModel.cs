@@ -3,8 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using TRMDesktopUI.Helpers;
 
 namespace TRMDesktopUI.ViewModels
 {
@@ -12,6 +14,12 @@ namespace TRMDesktopUI.ViewModels
     {
         private string _userName;
         private string _password;
+        private IAPIHelper _apiHelper;
+
+        public LoginViewModel(IAPIHelper apiHelper)
+        {
+            _apiHelper = apiHelper;
+        }
 
         public string UserName
         {
@@ -50,9 +58,20 @@ namespace TRMDesktopUI.ViewModels
         }
 
 
-        public void LogIn()
+        public async Task LogIn()
         {
-            //placeholder
+
+            try
+            {
+            var result = await _apiHelper.Authenticate(UserName, Password);
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message); //placeholder
+            }
+
         }
     }
 }

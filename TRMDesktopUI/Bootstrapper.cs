@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using TRMDesktopUI.Helpers;
+using TRMDesktopUI.Library.Api;
+using TRMDesktopUI.Library.Models;
 using TRMDesktopUI.ViewModels;
 
 namespace TRMDesktopUI
@@ -35,7 +37,9 @@ namespace TRMDesktopUI
             _container
                 .Singleton<IWindowManager, WindowManager>()     // Handling windows in and out
                 .Singleton<IEventAggregator, EventAggregator>() // Pass event message throughout app instead of passing data trhough constructor and method; link everything
-                .Singleton<IAPIHelper, APIHelper>();            // singleton = create one instance of the class for the life of app or scope of container ( same thing here ) same as a static class
+                .Singleton<IAPIHelper, APIHelper>()            // singleton = create one instance of the class for the life of app or scope of container ( same thing here ) same as a static class
+                .Singleton<ILoggedInUserModel, LoggedInUserModel>();
+                //.Singleton<LoggedInUserModel>();            //we could use that to create an instance of loggedInUserModel and reuse the same instance when needed but it is better to use an interface for the futur
 
             GetType().Assembly.GetTypes()
                 .Where(Type => Type.IsClass)

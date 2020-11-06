@@ -15,12 +15,13 @@ namespace TRMDataManager.Controllers
     {
 
         // GET: User/Id
-        public List<UserModel> GetById()
+        [HttpGet]
+        public UserModel GetById()
         {
             string userId = RequestContext.Principal.Identity.GetUserId(); //grabd the id from the logged in user instead of requesting the id. Otherwise you can lookup anyone
             UserData data = new UserData();
 
-            return data.GetUserById(userId);
+            return data.GetUserById(userId).First();
 
         }
 
